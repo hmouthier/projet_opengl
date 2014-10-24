@@ -9,7 +9,11 @@ QT       += core
 QT       -= gui
 QT += opengl
 
-LIBS += -lGLU -lGL -lglut
+
+LIBS += -lglut
+LIBS += -lGL -lGLU -lglut
+INCLUDEPATH += -L /usr/lib/
+TARGET = OpenGL
 
 INCLUDEPATH += -L/usr/lib/
 INCLUDEPATH += /usr/local/include/opencv2
@@ -41,7 +45,9 @@ SOURCES += main.cpp \
     test.cpp \
     point.cpp \
     forme.cpp \
-    initgl.cpp
+    initgl.cpp \
+traitementimage.cpp
+
 
 HEADERS += \
     camera.h \
@@ -49,4 +55,5 @@ HEADERS += \
     test.h \
     point.h \
     forme.h \
-    initgl.h
+    initgl.h \
+traitementimage.h

@@ -4,6 +4,11 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include <GL/freeglut.h>
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include <stdio.h>
+#include <stdlib.h>
+#include <traitementimage.h>
 
 #include "initgl.h"
 
@@ -11,6 +16,10 @@
 
 int main(int argc, char *argv[])
 {
+//    Mat image = imread( argv[1]);
+//    TraitementImage projet(&image);
+
+
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
