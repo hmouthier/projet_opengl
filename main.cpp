@@ -16,8 +16,8 @@
 
 int main(int argc, char *argv[])
 {
-//    Mat image = imread( argv[1]);
-//    TraitementImage projet(&image);
+    Mat image = imread( argv[1]);
+    TraitementImage projet(&image);
 
 
 

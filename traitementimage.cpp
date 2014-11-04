@@ -20,6 +20,27 @@ TraitementImage::TraitementImage(Mat *image)
     Dilatation(1);
     ZoneUniforme(&src);
 
+    Mat canny_output;
+    vector<vector<Point> > contours;
+    vector<Vec4i> hierarchy;
+    RNG rng(12345);
+    //  Test(ImageSource);
+    /// Detect edges using canny
+    Canny( src, canny_output, 100, 100*2, 3 );
+    /// Find contours
+    findContours( canny_output, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
+
+    /// Draw contours
+    Mat drawing = Mat::zeros( canny_output.size(), CV_8UC3 );
+    for( int i = 0; i< contours.size(); i++ )
+    {
+        if (contours.at(i).size() > 50)
+        {
+            Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
+            drawContours( drawing, contours, i, color, 2, 8, hierarchy, 0, Point() );
+        }
+    }
+
 }
 
 Mat TraitementImage::TraitementPhase1(){
