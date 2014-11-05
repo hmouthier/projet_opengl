@@ -356,134 +356,65 @@ glVertex3f(  -1,  1,  1);
 
 }
 
-void bati::drawgeneral(forme myforme){
+void bati::drawgeneral(vector<Point> myforme){
+float X_centre=0,Y_centre=0;
+    for(int i=0;i<myforme.size()-1;i++){
+        X_centre+=myforme.at(i).x;
+        Y_centre+=myforme.at(i).y;
+    }
+    X_centre=X_centre/myforme.size();
+     Y_centre=Y_centre/myforme.size();
+
+    glBegin(GL_TRIANGLE_FAN);
+     glColor3f(1.0f,0.0f,0.0f);
+     glVertex3f( X_centre, Y_centre,60);
+        for(int i=0;i<myforme.size()-1;i++){
+
+
+            glColor3f(1.0f,0.0f,0.5f);
+            glVertex3f( myforme.at(i).x, myforme.at(i).y,50);
+
+        }
+
+        glVertex3f( myforme.at(0).x, myforme.at(0).y,50);
+
+
+     glEnd();
 
 
 
 glBegin(GL_QUADS);
-    for(int i=0;i<myforme.tailleForme()-1;i++){
+    for(int i=0;i<myforme.size()-1;i++){
 
 
         glColor3f(0.1f,1.0f,0.5f);      // Couleur verte
-        glVertex3f( myforme.getPoint(i).getX(), myforme.getPoint(i).getY(),0);  // Haut droit du quadrilatere (Haut)
-        glVertex3f(myforme.getPoint(i+1).getX(), myforme.getPoint(i+1).getY(),0);  // Haut gauche du quadrilatere (Haut)
+        glVertex3f( myforme.at(i).x, myforme.at(i).y,0);  // Haut droit du quadrilatere (Haut)
+        glVertex3f(myforme.at(i+1).x, myforme.at(i+1).y,0);  // Haut gauche du quadrilatere (Haut)
        glColor3f(0.1f,0.5f,0.5f);
-        glVertex3f(myforme.getPoint(i+1).getX(), myforme.getPoint(i+1).getY(),1);  // Bas gauche du quadrilatere (Haut)
+        glVertex3f(myforme.at(i+1).x, myforme.at(i+1).y,50);  // Bas gauche du quadrilatere (Haut)
         glColor3f(0.5f,1.0f,0.5f);
-        glVertex3f( myforme.getPoint(i).getX(), myforme.getPoint(i).getY(),1);  // Bas droit du quadrilatere (Haut)
+        glVertex3f( myforme.at(i).x, myforme.at(i).y,50);  // Bas droit du quadrilatere (Haut)
 
     }
     glColor3f(0.0f,1.0f,0.0f);      // Couleur verte
-    glVertex3f( myforme.getPoint(myforme.tailleForme()-1).getX(), myforme.getPoint(myforme.tailleForme()-1).getY(),0);  // Haut droit du quadrilatere (Haut)
-    glVertex3f(myforme.getPoint(0).getX(), myforme.getPoint(0).getY(),0);  // Haut gauche du quadrilatere (Haut)
-    glVertex3f(myforme.getPoint(0).getX(), myforme.getPoint(0).getY(),1);  // Bas gauche du quadrilatere (Haut)
-    glVertex3f( myforme.getPoint(myforme.tailleForme()-1).getX(), myforme.getPoint(myforme.tailleForme()-1).getY(),1);  // Bas droit du quadrilatere (Haut)
+    glVertex3f( myforme.at(myforme.size()-1).x, myforme.at(myforme.size()-1).y,0);  // Haut droit du quadrilatere (Haut)
+    glVertex3f(myforme.at(0).x, myforme.at(0).y,0);  // Haut gauche du quadrilatere (Haut)
+    glVertex3f(myforme.at(0).x, myforme.at(0).y,50);  // Bas gauche du quadrilatere (Haut)
+    glVertex3f( myforme.at(myforme.size()-1).x, myforme.at(myforme.size()-1).y,50);  // Bas droit du quadrilatere (Haut)
 
  glEnd();
-     glutSwapBuffers();
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    list<list<float> > li;
-//    list<float> points;
-//    points.push_back(0);
-//    points.push_back(0);
-//    li(0)=points;
-//    points[0]=1;
-//    li(1)=points;
-//    points[1]=1;
-//    li(2)=points;
-//    points[1]=0;
-//    li[3]=points;
-//cout<<li.size()<<endl;
-//vector<float> points1;
-//vector<float> points2;
-// glBegin(GL_QUADS);
-//    for(int i=0;i<li.size();i++){
-//        points1=li[i];
-//        points2=li[i+1];
-
-//        glColor3f(0.0f,1.0f,0.0f);      // Couleur verte
-//        glVertex3f( points1[0], points1[1],0);  // Haut droit du quadrilatere (Haut)
-//        glVertex3f(points2[0], points2[1],0);  // Haut gauche du quadrilatere (Haut)
-//        glVertex3f(points1[0], points1[1],1);  // Bas gauche du quadrilatere (Haut)
-//        glVertex3f( points2[0], points2[1],1);  // Bas droit du quadrilatere (Haut)
-
-//    }
-// glEnd();
-//     glutSwapBuffers();
-
-//    glColor3f(0.0f,1.0f,0.0f);      // Couleur verte
-//    glVertex3f( x, x,-x);  // Haut droit du quadrilatere (Haut)
-//    glVertex3f(-x, x,-x);  // Haut gauche du quadrilatere (Haut)
-//    glVertex3f(-x, x,x);  // Bas gauche du quadrilatere (Haut)
-//    glVertex3f( x,x,x);  // Bas droit du quadrilatere (Haut)
-
-
-
-//    glColor3f(1.0f,0.5f,0.0f);      // Couleur orange
-//    glVertex3f( x,-x,x);  // Haut droit du quadrilatere (Bas)
-//    glVertex3f(-x,-x,x);  // Haut gauche du quadrilatere (Bas)
-//    glVertex3f(-x,-x,-x);  // Bas gauche du quadrilatere (Bas)
-//    glVertex3f( x,-x,-x);  // Bas droit du quadrilatere (Bas)
-
-
-
-//    glColor3f(1.0f,0.0f,0.0f);       // Couleur rouge
-//    glVertex3f( x,x,x);   // Haut droit du quadrilatere (Avant)
-//    glVertex3f(-x,x,x);   // Haut gauche du quadrilatere (Avant)
-//    glVertex3f(-x,-x,x);   // Bas gauche du quadrilatere (Avant)
-//    glVertex3f( x,-x,x);   // Bas droit du quadrilatere (Avant)
-
-
-
-//    glColor3f(1.0f,1.0f,0.0f);      // Couleur jaune
-//    glVertex3f(x,-x,-x);  // Haut droit du quadrilatere (Arriere)
-//    glVertex3f(-x,-x,-x);  // Haut gauche du quadrilatere (Arriere)
-//    glVertex3f(-x,x,-x);  // Bas gauche du quadrilatere (Arriere)
-//    glVertex3f( x,x,-x);  // Bas droit du quadrilatere (Arriere)
-
-
-
-
-
-//    glColor3f(0.0f,0.0f,1.0f);      // Couleur bleue
-//    glVertex3f(-x,x,x);  // Haut droit du quadrilatere (Gauche)
-//    glVertex3f(-x,x,-x);  // Haut gauche du quadrilatere (Gauche)
-//    glVertex3f(-x,-x,-x);  // Bas gauche du quadrilatere (Gauche)
-//    glVertex3f(-x,-x,x);  // Bas droit du quadrilatere (Gauche)
-
-
-
-
-//    glColor3f(1.0f,0.0f,1.0f);      // Couleur violette
-//    glVertex3f( x,x,-x);  // Haut droit du quadrilatere (Droite)
-//    glVertex3f(x,x,x);  // Haut gauche du quadrilatere (Droite)
-//    glVertex3f( x,-x,x);  // Bas gauche du quadrilatere (Droite)
-//    glVertex3f(x,-x,-x);  // Bas droit du quadrilatere (Droite)
-//  glEnd();
-
-
-
-
-
 
 
 
 }
 
 
-
+void bati::drawtotal(vector<vector<Point> > cont_filt){
+    for(int i=0;i<cont_filt.size();i++){
+        drawgeneral(cont_filt.at(i));
+    }
+ glutSwapBuffers();
+}
 
 
 

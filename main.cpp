@@ -9,16 +9,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <traitementimage.h>
-
+#include <iostream>
 #include "initgl.h"
 
+using namespace std;
 
 
 int main(int argc, char *argv[])
 {
     Mat image = imread( argv[1]);
-    TraitementImage projet(&image);
 
+    TraitementImage projet(&image);
 
 
     glutInit(&argc, argv);
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
     glutInitWindowPosition(100,100);
     glutInitWindowSize(1000,1000);
     glutCreateWindow(argv[0]) ;
-    initGL();
+    initGL(projet);
 
     glutMainLoop() ;
     return 0 ;

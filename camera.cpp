@@ -68,7 +68,7 @@ void camera::transl(float hori,float verti){
     //vect1.normalize();
     //vect3.normalize();
     //vect2.normalize();
-    cout <<"vect1 : "<< vect1[0] <<" "<< vect1[1]<<" "<< vect1[2]<<" vect2 : " << vect2[0]<<" "<< vect2[1]<<" "<< vect2[2]<<" vect3 : "<< vect3[0]<<" " << vect3[1]<<" "<< vect3[2] <<endl;
+//    cout <<"vect1 : "<< vect1[0] <<" "<< vect1[1]<<" "<< vect1[2]<<" vect2 : " << vect2[0]<<" "<< vect2[1]<<" "<< vect2[2]<<" vect3 : "<< vect3[0]<<" " << vect3[1]<<" "<< vect3[2] <<endl;
 
 }
 void camera::rotcam(float x,float y){
@@ -82,9 +82,9 @@ void camera::rotcam(float x,float y){
 //    vect2.normalize();
 //    vect3.normalize();
 
-    XO=XC-vect1[0]*100;
-    YO=YC-vect1[1]*100;
-    ZO=ZC-vect1[2]*100;
+    XO=XC-vect1[0]*1000;
+    YO=YC-vect1[1]*1000;
+    ZO=ZC-vect1[2]*1000;
 
 }
 

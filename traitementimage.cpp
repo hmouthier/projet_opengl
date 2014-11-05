@@ -16,7 +16,13 @@ TraitementImage::TraitementImage(Mat *image)
     TraitementPhase1();
 
     TransformImageBlackWhite();
+
     Erosion(1);
+
+    Dilatation(1);
+
+    Erosion(2);
+
     Dilatation(1);
     ZoneUniforme(&src);
 
@@ -27,6 +33,7 @@ TraitementImage::TraitementImage(Mat *image)
     //  Test(ImageSource);
     /// Detect edges using canny
     Canny( src, canny_output, 100, 100*2, 3 );
+    cout << "étape 5"<< endl;
     /// Find contours
     findContours( canny_output, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
 
@@ -41,6 +48,7 @@ TraitementImage::TraitementImage(Mat *image)
         }
     }
 
+les_contours=contours;
 }
 
 Mat TraitementImage::TraitementPhase1(){
@@ -166,4 +174,7 @@ Mat TraitementImage::affiche(char* const title){
 
 TraitementImage::~TraitementImage(){
 
+}
+vector<vector<Point> > TraitementImage::exportcontour(){
+    return les_contours;
 }

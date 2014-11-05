@@ -20,12 +20,12 @@ public:
     Mat affiche(char* const title);
     bool ProcedureTest();
     ~TraitementImage();
-
+    vector<vector<Point> > exportcontour();
 private:
     Mat *bilateral;
     Mat  *channel[3];
     Mat src;
-
+    vector<vector<Point> > les_contours;
 };
 
 #endif // TRAITEMENTIMAGE_H

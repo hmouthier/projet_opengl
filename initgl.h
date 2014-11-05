@@ -1,8 +1,9 @@
 #ifndef INITGL_H
 #define INITGL_H
+#include <vector>
+#include "traitementimage.h"
 
-
-    void initGL();
+    void initGL(TraitementImage );
     void changeSize(int , int );
     void processNormalKeys(unsigned char key, int x, int y);
     void processSpecialKeys(int key, int x, int y);
