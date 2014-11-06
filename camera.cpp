@@ -42,7 +42,7 @@ void camera::initcam(){
     gluLookAt(	XC, YC, ZC,
                 XO, YO, ZO,
                 XU,YU,ZU);
-
+//cout << XC<<", "<< YC<<", "<<ZC<<", "<< XO<<", "<< YO<<", "<< ZO<<", "<<        XU<<", "<<YU<<", "<<ZU<< endl;
 }
 
 

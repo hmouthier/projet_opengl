@@ -16,6 +16,7 @@
 #include "forme.h"
 #include "bati.h"
 #include "traitementimage.h"
+#include "afficheortho.h"
 using namespace std;
 float verti=0.0f, hori=0.0f;
 int X=0,Y=0,vuehori=0,vueverti=0;
@@ -23,8 +24,16 @@ float conthori=0,contverti=0,contvuehori=0,contvueverti=0;
 camera macam;
 vector<vector<Point> > s_contour,cont_filt;
 bati b1;
-void initGL(TraitementImage projet)
+GLfloat Blanc[] = {1.0f, 1.0f, 1.0f, 1.0f};
+//Taille = 128 * 128. RGB 3 octets
+char buffer[128*128*3];
+Mat imagebis;
+
+void initGL(TraitementImage projet, Mat *image)
 {
+imagebis=*image;
+
+
 
     s_contour= projet.exportcontour();
 
@@ -150,6 +159,8 @@ void mouseMovePassive(int x, int y) {
 void display(void)
 {
 
+
+
     if(conthori==hori)
         hori=0;
     if(contverti==verti)
@@ -169,37 +180,10 @@ void display(void)
     contvuehori=vuehori;
     contvueverti=vueverti;
 
-
-    //    QList<point> listpoint;
-    //    listpoint << point(0,0) << point(1,0)<< point(1.5,0.5)<< point(1,1)<< point(0,1);
-    //    forme myforme(listpoint);
+    afficheortho mon( &imagebis);
     b1.drawtotal(cont_filt);
-//    vector<Point> myforme;
-//    for(int j=0;j<cont_filt.size();j++){
-////        drawgeneral(cont_filt.at(i));
-//myforme=cont_filt.at(j);
-//    glBegin(GL_QUADS);
-//        for(int i=0;i<myforme.size()-1;i++){
 
 
-//            glColor3f(0.1f,1.0f,0.5f);      // Couleur verte
-//            glVertex3f( myforme.at(i).x, myforme.at(i).y,0);  // Haut droit du quadrilatere (Haut)
-//            glVertex3f(myforme.at(i+1).x, myforme.at(i+1).y,0);  // Haut gauche du quadrilatere (Haut)
-//           glColor3f(0.1f,0.5f,0.5f);
-//            glVertex3f(myforme.at(i+1).x, myforme.at(i+1).y,1);  // Bas gauche du quadrilatere (Haut)
-//            glColor3f(0.5f,1.0f,0.5f);
-//            glVertex3f( myforme.at(i).x, myforme.at(i).y,1);  // Bas droit du quadrilatere (Haut)
-
-//        }
-//        glColor3f(0.0f,1.0f,0.0f);      // Couleur verte
-//        glVertex3f( myforme.at(myforme.size()-1).x, myforme.at(myforme.size()-1).y,0);  // Haut droit du quadrilatere (Haut)
-//        glVertex3f(myforme.at(0).x, myforme.at(0).y,0);  // Haut gauche du quadrilatere (Haut)
-//        glVertex3f(myforme.at(0).x, myforme.at(0).y,1);  // Bas gauche du quadrilatere (Haut)
-//        glVertex3f( myforme.at(myforme.size()-1).x, myforme.at(myforme.size()-1).y,1);  // Bas droit du quadrilatere (Haut)
-
-//     glEnd();
-//    }
-// glutSwapBuffers();
 
 
 }

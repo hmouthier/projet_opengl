@@ -46,7 +46,8 @@ SOURCES += main.cpp \
     point.cpp \
     forme.cpp \
     initgl.cpp \
-traitementimage.cpp
+traitementimage.cpp \
+    afficheortho.cpp
 
 
 HEADERS += \
@@ -56,4 +57,5 @@ HEADERS += \
     point.h \
     forme.h \
     initgl.h \
-traitementimage.h
+traitementimage.h \
+    afficheortho.h
