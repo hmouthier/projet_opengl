@@ -1,12 +1,19 @@
 #ifndef BATI_H
 #define BATI_H
 #include <vector>
-#include "forme.h"
+
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <GL/glut.h>    // Header File For The GLUT Library
+#include <GL/gl.h>    // Header File For The OpenGL32 Library
+#include <GL/glu.h>
+#include <iostream>
+#include <QList>
+#include <list>
+
 using namespace cv;
 class bati
 {
@@ -14,13 +21,11 @@ public:
     bati();
     bati(int );
 
-    void draw4();
-    void draw3(float);
-    void draw2(float);
-    void draw();
-    void drawgeneral(vector<Point>);
-    void drawtotal(vector<vector<Point> > );
-    //~bati();
+    void drawgeneral(Point2f[]);
+    void drawtotal( );
+    void tribati(vector<RotatedRect> contourbati);
+private:
+    vector<RotatedRect> batifiltre;
 };
 
 #endif // BATI_H

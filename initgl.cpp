@@ -12,70 +12,51 @@
 #include <GL/freeglut.h>
 #include "initgl.h"
 #include "camera.h"
-#include "point.h"
-#include "forme.h"
+
 #include "bati.h"
 #include "traitementimage.h"
 #include "afficheortho.h"
+#include "vegetation.h"
+#include "route.h"
 using namespace std;
 float verti=0.0f, hori=0.0f;
 int X=0,Y=0,vuehori=0,vueverti=0;
 float conthori=0,contverti=0,contvuehori=0,contvueverti=0;
 camera macam;
 vector<vector<Point> > s_contour,cont_filt;
-bati b1;
+
+
 GLfloat Blanc[] = {1.0f, 1.0f, 1.0f, 1.0f};
 //Taille = 128 * 128. RGB 3 octets
 char buffer[128*128*3];
 Mat imagebis;
+vector<vector<Point> > petitArbre,foret;
+vector<Point> centrArbre,centreForet;
+vector<RotatedRect> batim,batifiltre;
+vegetation arbre;
+bati batiment;
+//route maroute;
 
-void initGL(TraitementImage projet, Mat *image)
+void initGL(TraitementImage projet)
 {
-imagebis=*image;
-
-
-
-    s_contour= projet.exportcontour();
-
-    for(int i=0;i<s_contour.size();i++){
-        if (s_contour.at(i).size() > 50 )
-        {
-            cont_filt.push_back(s_contour.at(i));
-            //            b1.drawgeneral(s_contour.at(i));
-        }}
-
-    macam=camera();
-    int nbre=0;
-    for(int i=0;i<s_contour.size();i++){
-        if (s_contour.at(i).size() > 50)
-        {
-            nbre+=s_contour.at(i).size();
-            //            b1.drawgeneral(s_contour.at(i));
-        }}
-    cout << nbre<< endl;
+    imagebis=projet.exportRoad();
+    arbre.triVegeta(projet.exportcontourveget());
+    batiment.tribati(projet.exportcontourBati());
 
     glutDisplayFunc(display);
     glutIdleFunc(display);
     glutReshapeFunc(changeSize);
-
-    // here are the new entries
-
-
     glutKeyboardFunc(processNormalKeys);
-
     glutSpecialFunc(processSpecialKeys);
     glutPassiveMotionFunc(mouseMovePassive);
     glutMotionFunc(mouseMove);
-
     glEnable(GL_DEPTH_TEST);
-
     glutMainLoop() ;
 }
 
+
 void changeSize(int w, int h) {
 
-    // Prevent a divide by zero, when window is too short
-    // (you cant make a window of zero width).
     if (h == 0)
         h = 1;
 
@@ -156,16 +137,15 @@ void mouseMovePassive(int x, int y) {
     Y=y;
 }
 
+//http://www.mhzn.net/index.php/8-c-opengl/2-first-post
+
+
 void display(void)
 {
-
-
-
     if(conthori==hori)
         hori=0;
     if(contverti==verti)
         verti=0;
-
 
     macam.initcam();
     macam.transl(hori,verti);
@@ -180,11 +160,12 @@ void display(void)
     contvuehori=vuehori;
     contvueverti=vueverti;
 
+    //////// AFFICHAGE OPENGL////////////
+
     afficheortho mon( &imagebis);
-    b1.drawtotal(cont_filt);
-
-
-
+    batiment.drawtotal();
+    arbre.drawtotal();
+    glutSwapBuffers();
 
 }
 

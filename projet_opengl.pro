@@ -13,7 +13,7 @@ QT += opengl
 LIBS += -lglut
 LIBS += -lGL -lGLU -lglut
 INCLUDEPATH += -L /usr/lib/
-TARGET = OpenGL
+
 
 INCLUDEPATH += -L/usr/lib/
 INCLUDEPATH += /usr/local/include/opencv2
@@ -32,7 +32,7 @@ LIBS += -lopencv_flann
 
 
 
-TARGET = truc_de_hough
+TARGET = bientotFini
 CONFIG   += console
 CONFIG   -= app_bundle
 
@@ -42,20 +42,20 @@ TEMPLATE = app
 SOURCES += main.cpp \
     camera.cpp \
     bati.cpp \
-    test.cpp \
-    point.cpp \
-    forme.cpp \
     initgl.cpp \
-traitementimage.cpp \
-    afficheortho.cpp
+    traitementimage.cpp \
+    afficheortho.cpp \
+    vegetation.cpp \
+    percepunit.cpp
 
 
 HEADERS += \
     camera.h \
     bati.h \
-    test.h \
-    point.h \
-    forme.h \
     initgl.h \
-traitementimage.h \
-    afficheortho.h
+    traitementimage.h \
+    afficheortho.h \
+    vegetation.h \
+    percepunit.h
+
+FORMS +=

@@ -12,14 +12,15 @@
 #include <iostream>
 #include "initgl.h"
 #include "afficheortho.h"
+#include <percepunit.h>
 using namespace std;
 
 
 int main(int argc, char *argv[])
 {
+//    Mat image = imread( "/home/gtsi/Téléchargements/imageSat.png");
+
     Mat image = imread( argv[1]);
-
-
     TraitementImage projet(&image);
 
 
@@ -30,7 +31,7 @@ int main(int argc, char *argv[])
     glutInitWindowPosition(100,100);
     glutInitWindowSize(1000,1000);
     glutCreateWindow(argv[0]) ;
-    initGL(projet,&image);
+    initGL(projet);
 
     glutMainLoop() ;
     return 0 ;
