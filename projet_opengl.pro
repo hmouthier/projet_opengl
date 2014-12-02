@@ -46,7 +46,7 @@ SOURCES += main.cpp \
     traitementimage.cpp \
     afficheortho.cpp \
     vegetation.cpp \
-    percepunit.cpp
+    classification.cpp
 
 
 HEADERS += \
@@ -56,6 +56,6 @@ HEADERS += \
     traitementimage.h \
     afficheortho.h \
     vegetation.h \
-    percepunit.h
+    classification.h
 
 FORMS +=

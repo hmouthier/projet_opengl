@@ -12,19 +12,18 @@
 #include <iostream>
 #include "initgl.h"
 #include "afficheortho.h"
-#include <percepunit.h>
-using namespace std;
 
+using namespace std;
+#include <QString>
+#include <QImage>
+#include <QtOpenGL>
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {
-//    Mat image = imread( "/home/gtsi/Téléchargements/imageSat.png");
-
     Mat image = imread( argv[1]);
     TraitementImage projet(&image);
-
-
-
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
